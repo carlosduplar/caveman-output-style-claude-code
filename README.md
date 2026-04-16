@@ -19,6 +19,8 @@ Grounding: [Claude Code output styles docs](https://code.claude.com/docs/en/outp
 
 Same answer. Less yak.
 
+Less yak also mean lower cost and less wasted compute.
+
 ## why output style, not other thing
 
 Docs say output styles change how Claude responds, not what Claude knows.
@@ -91,15 +93,19 @@ Docs say custom style text adds some input tokens up front. Docs also say prompt
 
 Big win comes from shorter replies every turn.
 
+Less unnecessary output means lower token bill and less energy burned on useless text.
+
+Paper also interesting: [Brevity Constraints Reverse Performance Hierarchies in Language Models](https://arxiv.org/abs/2604.00025). Shorter answer can still keep quality, and sometimes improve it.
+
 ### rough savings
 
-| prompt | normal answer | caveman answer | rough word cut |
+| prompt | normal answer | caveman answer | rough token cut |
 | --- | --- | --- | --- |
-| why build fail? | Build is failing because TypeScript cannot resolve the `@/auth` import after the alias change. Update the path mapping or import path. | Build fails: TypeScript cannot resolve `@/auth`. Fix alias or import path. | 19 -> 11 |
-| what changed in auth? | I updated the middleware to reject missing bearer tokens before decoding the JWT, which prevents the null token crash. | Auth middleware now rejects missing bearer token before JWT decode. Crash gone. | 20 -> 11 |
-| how set default style? | Open your Claude settings file and add the `outputStyle` field with the value `caveman`, then start a new session. | Add `"outputStyle": "caveman"` to settings. Start new session. | 17 -> 9 |
+| why build fail? | Build is failing because TypeScript cannot resolve the `@/auth` import after the alias change. Update the path mapping or import path. | Build fails: TypeScript cannot resolve `@/auth`. Fix alias or import path. | ~42% |
+| what changed in auth? | I updated the middleware to reject missing bearer tokens before decoding the JWT, which prevents the null token crash. | Auth middleware now rejects missing bearer token before JWT decode. Crash gone. | ~45% |
+| how set default style? | Open your Claude settings file and add the `outputStyle` field with the value `caveman`, then start a new session. | Add `"outputStyle": "caveman"` to settings. Start new session. | ~47% |
 
-Real token count vary. Pattern same: less fluff out -> less output spend.
+Real token count vary. Table shows rough reduction only. Pattern same: less fluff out -> less output spend.
 
 ## why `keep-coding-instructions: true`
 
