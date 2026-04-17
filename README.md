@@ -5,7 +5,7 @@
 <h1 align="center">Caveman Output Style for Claude Code</h1>
 
 <p align="center">
-  Claude Code caveman output style. Less fluff. Same technical signal. Can be always on by default. Better than CLAUDE.md or skills.
+  caveman output style. Less fluff. Same technical signal. Can be always on by default. Better than CLAUDE.md or skills.
 </p>
 
 ## quick start
