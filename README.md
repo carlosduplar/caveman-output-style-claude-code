@@ -1,16 +1,19 @@
-<h1>Caveman Output Style for Claude Code</h1>
+<p align="center">
+  <img src="caveman-claude-code.png" alt="Caveman Claude Code Output Style" width="600" />
+</p>
+
+<h1 align="center">Caveman Output Style for Claude Code</h1>
 
 <p align="center">
   <strong>why waste words when few work?</strong>
 </p>
 
-<p align="center">
-  <img src="caveman-claude-code.png" alt="Caveman Claude Code Output Style" width="600" />
-</p>
-
 <p>
-  Claude Code caveman output style. Less fluff. Same technical signal. Can be set as always on by default. 
-  Better Claude Code support than CLAUDE.md or skills.
+  Claude Code caveman output style. 
+  - Less fluff. 
+  - Same technical signal. 
+  - Can be set as always on by default. 
+  - Better adherence than CLAUDE.md or skills.
 </p>
 
 ## quick start
