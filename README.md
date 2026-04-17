@@ -5,7 +5,8 @@
 </p>
 
 <p align="center">
-  Claude Code caveman output style. Less fluff. Same technical signal. Can be set as always on by default. Better support than CLAUDE.md or skills.
+  Claude Code caveman output style. Less fluff. Same technical signal. Can be set as always on by default. 
+  Better Claude Code support than CLAUDE.md or skills.
 </p>
 
 <p align="center">
@@ -46,6 +47,12 @@ Real token count vary. Table shows rough reduction only. Pattern same: less fluf
 
 Same answer. Less bla. Also mean lower cost and less wasted compute.
 
+Use when:
+
+- You keep typing "be concise"
+- You want same terse format every turn
+- You want less output spend without losing technical substance
+
 ## why output style, not other things
 
 Official docs show output styles change how Claude responds, not what Claude knows.
@@ -61,29 +68,17 @@ For goal "talk short every turn," output style fit exact job:
 
 Short version: want caveman every reply -> use output style.
 
+Reference: [Claude Code output styles docs](https://code.claude.com/docs/en/output-styles)
+
 ## why this save tokens
 
-Custom style text adds some input tokens up front. Prompt caching reduces repeat cost after first request in session.
+Custom style text adds ~100 input tokens up front, cached after first request in session.
 
 Big win comes from shorter replies every turn.
 
 Less unnecessary output: lower token bill, less energy wasted on filler.
 
-Backed by research: [Brevity Constraints Reverse Performance Hierarchies in Language Models](https://arxiv.org/abs/2604.00025). Shorter answer can still keep quality, and sometimes improve it.
-
-## why `keep-coding-instructions: true`
-
-Custom output styles drop Claude Code coding instructions unless keep-coding-instructions is true.
-
-This setting keeps caveman voice **and** normal coding behavior.
-
-## use when
-
-- You keep typing "be concise"
-- You want same terse format every turn
-- You want less output spend without losing technical substance
-
-Grounding: [Claude Code output styles docs](https://code.claude.com/docs/en/output-styles)
+Backed by research: [Brevity Constraints Reverse Performance Hierarchies in Language Models](https://arxiv.org/abs/2604.00025). Shorter answer keeps quality, and sometimes even improves it.
 
 ## FAQ
 
