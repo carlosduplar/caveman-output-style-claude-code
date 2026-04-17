@@ -9,11 +9,7 @@
 </p>
 
 <p align="center">
-  <span>Claude Code caveman output style.</span>
-  <span>Less fluff.</span>
-  <span>Same technical signal.</span>
-  <span>Can be always on by default.</span>
-  <span>Better than CLAUDE.md or skills.</span>
+  Claude Code caveman output style. Less fluff. Same technical signal. Can be always on by default. Better than CLAUDE.md or skills.
 </p>
 
 ## quick start
