@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="caveman-claude-code.png" alt="Caveman Claude Code" width="600" />
+</p>
+
 <h1 align="center">Caveman Output Style for Claude Code</h1>
 
 <p align="center">
@@ -7,6 +11,28 @@
 <p align="center">
   Claude Code caveman output style. Less fluff. Same technical signal. Can be set as always on by default. Better support than CLAUDE.md or skills.
 </p>
+
+## quick start
+
+One command. Done.
+
+```bash
+# macOS / Linux
+mkdir -p ~/.claude/output-styles && cp ./.claude/output-styles/caveman.md ~/.claude/output-styles/caveman.md
+```
+
+```powershell
+# Windows
+New-Item -ItemType Directory $HOME\.claude\output-styles -Force | Out-Null; Copy-Item .\.claude\output-styles\caveman.md $HOME\.claude\output-styles\caveman.md -Force
+```
+
+Then: `/options` → `Output Style` → `Caveman`. Restart session.
+
+Want it always on? Add to `~/.claude/settings.json`:
+
+```json
+{ "outputStyle": "caveman" }
+```
 
 ## Why use caveman?
 
@@ -35,57 +61,6 @@ For goal "talk short every turn," output style fit exact job:
 
 Short version: want caveman every reply -> use output style.
 
-## repo layout
-
-```text
-.
-|-- .claude
-|   `-- output-styles
-|       `-- caveman.md
-`-- README.md
-```
-
-Copy same path into local `~/.claude`.
-
-## install
-
-### 1. copy file
-
-PowerShell:
-
-```powershell
-New-Item -ItemType Directory $HOME\.claude\output-styles -Force | Out-Null
-Copy-Item .\.claude\output-styles\caveman.md $HOME\.claude\output-styles\caveman.md -Force
-```
-
-macOS / Linux:
-
-```bash
-mkdir -p ~/.claude/output-styles
-cp ./.claude/output-styles/caveman.md ~/.claude/output-styles/caveman.md
-```
-
-### 2. enable style
-
-1. Open Claude.
-2. Run `/options`.
-3. Pick `Output Style`.
-4. Pick `Caveman`.
-
-If build shows `/config` instead, use same picker there. Claude Code docs use `/config`.
-
-Start new session after change. Docs say output style loads at session start.
-
-## make default in Claude Code
-
-Add this to `~/.claude/settings.json`:
-
-```json
-{
-  "outputStyle": "caveman"
-}
-```
-
 ## why this save tokens
 
 Custom style text adds some input tokens up front. Prompt caching reduces repeat cost after first request in session.
@@ -109,3 +84,30 @@ This setting keeps caveman voice **and** normal coding behavior.
 - You want less output spend without losing technical substance
 
 Grounding: [Claude Code output styles docs](https://code.claude.com/docs/en/output-styles)
+
+## FAQ
+
+**Does caveman make Claude dumber?**
+No. Same knowledge. Same reasoning. Just shorter output. Research shows brevity can improve answer quality.
+
+**Will it break code generation?**
+No. `keep-coding-instructions: true` keeps all coding behavior intact. Only the voice changes.
+
+**Can I switch back?**
+Yes. `/options` → pick different style. Or remove from `settings.json`.
+
+**Does it work with skills and agents?**
+Yes. Output style is the base voice. Skills and agents still work normally.
+
+**Why not just tell Claude "be concise"?**
+You can. But you have to say it every turn. Output style is always on. Set once. Forget.
+
+**Does it save money?**
+Yes. Fewer output tokens = lower cost. Especially on long sessions.
+
+**Can I customize it?**
+Yes. Edit `caveman.md` in your `~/.claude/output-styles/` folder. Make it your own.
+
+## license
+
+MIT. Do what you want.
