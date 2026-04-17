@@ -5,7 +5,7 @@
 <h1 align="center">Caveman Output Style for Claude Code</h1>
 
 <p align="center">
-  caveman output style. Less fluff. Same technical signal. Can be always on by default. Better than CLAUDE.md or skills.
+  caveman as output style. Less fluff, same technical signal. Can be set always on by default. Better than CLAUDE.md or skills.
 </p>
 
 ## quick start
@@ -22,11 +22,11 @@ mkdir -p ~/.claude/output-styles && cp ./.claude/output-styles/caveman.md ~/.cla
 New-Item -ItemType Directory $HOME\.claude\output-styles -Force | Out-Null; Copy-Item .\.claude\output-styles\caveman.md $HOME\.claude\output-styles\caveman.md -Force
 ```
 
-Then: `/config` → `Output Style` → `Caveman`. Restart session.
+Then: `/config` → `Output Style` → `Caveman`. 
 
 <img width="891" height="268" alt="image" src="https://github.com/user-attachments/assets/8a04a7a0-f043-4ac0-a6d5-62f1cd83364b" />
 
-Want it always on? Add to `~/.claude/settings.json`:
+Want it always on? Add this to `~/.claude/settings.json`:
 
 ```json
 { "outputStyle": "caveman" }
@@ -42,7 +42,7 @@ Want it always on? Add to `~/.claude/settings.json`:
 
 Real token count will vary. Table shows rough reduction only. Pattern is the same: less fluff out -> less output spend.
 
-Same answer. Less bla. Shorter replies every turn. Lower token bill and less energy wasted on filler.
+Same answer, less bla. Shorter replies every turn, lower token bill and less energy wasted on filler.
 
 Use when:
 
@@ -56,7 +56,7 @@ Backed by research: [Brevity Constraints Reverse Performance Hierarchies in Lang
 
 [Claude Code official documentation](https://code.claude.com/docs/en/output-styles) show output styles change how Claude responds, not what Claude knows.
 
-Output style is the perfect matching tool for achieving "talk short on every turn" goal:
+Output styles are the perfect matching tool for achieving "talk short on every turn" goal:
 
 | tool | good for | why worse? |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ Output style is the perfect matching tool for achieving "talk short on every tur
 | skills | reusable workflows, task prompts | skills load when invoked or relevant. Claude Code may decide against using it. Not always-on formatting layer |
 | `--append-system-prompt` | one-off system prompt append | appended at end of system prompt. lower priority. busts cache if value changes |
 
-All methods add roughly the same amount of input tokens. Output style wins on adherence and consistency, not input cost.
+All methods add roughly the same amount of input tokens. Output styles win on adherence and consistency, not input cost.
 
 ## how it works
 
@@ -80,11 +80,6 @@ This section is:
 - **System prompt level** — not buried in user messages like CLAUDE.md
 - **Always on** — no model discretion, no invocation needed
 - **Survives long threads** — style persists without dilution
-
-vs other methods:
-- **CLAUDE.md**: User message after system prompt. Directive loses weight on long threads.
-- **Skills**: Lazy-loaded. Model decides if relevant.
-- **`--append-system-prompt`**: End of system prompt. Lower priority. Cache-busting if value changes.
 
 ## FAQ
 
@@ -125,7 +120,7 @@ vs other methods:
 
 ## license
 
-MIT. Do what you want with it.
+MIT. Do what you wish with it.
 
 ---
 
