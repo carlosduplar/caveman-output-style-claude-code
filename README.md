@@ -64,6 +64,14 @@ For goal "talk short every turn," output style fit exact job:
 | `CLAUDE.md` | project rules, conventions, codebase memory | adds user message after default prompt. not purpose-built for response style, directive lost on long threads |
 | agents | delegated tasks with own tools, model, context | agents solve specific jobs. not base voice for whole session |
 | skills | reusable workflows, task prompts | skills load when invoked or relevant. Claude Code may decide against using it. Not always-on formatting layer |
+| `--append-system-prompt` | one-off system prompt append | appended at end of system prompt. lower priority. busts cache if value changes |
+
+All methods add input tokens. Output style wins on **adherence** and **relevancy**:
+
+- Purpose-built for response formatting, not general instructions
+- Injected at system prompt level, not buried in user messages
+- Always on. No invocation needed. No model discretion.
+- Survives long threads without dilution
 
 Short version: want caveman every reply -> use output style.
 
@@ -71,7 +79,7 @@ Reference: [Claude Code output styles docs](https://code.claude.com/docs/en/outp
 
 ## why this save tokens
 
-Custom style text adds ~100 input tokens up front, cached after first request in session.
+All methods add input tokens. Output style wins on adherence, not input cost.
 
 Big win comes from shorter replies every turn.
 
