@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="caveman-claude-code.png" alt="Caveman Claude Code" width="600" />
-</p>
-
 <h1 align="center">Caveman Output Style for Claude Code</h1>
 
 <p align="center">
@@ -10,6 +6,10 @@
 
 <p align="center">
   Claude Code caveman output style. Less fluff. Same technical signal. Can be set as always on by default. Better support than CLAUDE.md or skills.
+</p>
+
+<p align="center">
+  <img src="caveman-claude-code.png" alt="Caveman Claude Code" width="600" />
 </p>
 
 ## quick start
