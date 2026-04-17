@@ -26,7 +26,9 @@ mkdir -p ~/.claude/output-styles && cp ./.claude/output-styles/caveman.md ~/.cla
 New-Item -ItemType Directory $HOME\.claude\output-styles -Force | Out-Null; Copy-Item .\.claude\output-styles\caveman.md $HOME\.claude\output-styles\caveman.md -Force
 ```
 
-Then: `/options` → `Output Style` → `Caveman`. Restart session.
+Then: `/config` → `Output Style` → `Caveman`. Restart session.
+
+<img width="891" height="268" alt="image" src="https://github.com/user-attachments/assets/8a04a7a0-f043-4ac0-a6d5-62f1cd83364b" />
 
 Want it always on? Add to `~/.claude/settings.json`:
 
