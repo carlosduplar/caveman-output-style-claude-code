@@ -4,11 +4,11 @@
 
 <h1 align="center">Caveman Output Style for Claude Code</h1>
 
-<h2 align="center">Yet another caveman implementation for Claude Code, but as an output style. Better consistency and adherence, always-on formatting.</h2>
+<p align="center">Yet another caveman implementation for Claude Code, but as an output style. Better consistency and adherence, always-on formatting.</p>
 
-<h3 align="center">
+<p align="center">
   Less fluff, same technical signal. Can be set always on by default. Better than CLAUDE.md or skills.
-</h3>
+</p>
 
 ## quick start
 
