@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="caveman-claude-code.png" alt="Caveman Claude Code Output Style" width="1280" />
+  <img src="caveman-claude-code.png" alt="Caveman Output Style for Claude Code - less fluff, token savings, always-on formatting" width="1280" />
 </p>
 
 <h1 align="center">Caveman Output Style for Claude Code</h1>
@@ -88,26 +88,40 @@ vs other methods:
 
 ## FAQ
 
-**Does caveman make Claude dumber?**
-Not at all. Same knowledge, same reasoning, just shorter output. Research shows output brevity can even improve answer quality.
+<details>
+<summary><strong>Does caveman make Claude dumber?</strong></summary>
+<p>Not at all. Same knowledge, same reasoning, just shorter output. Research shows output brevity can even improve answer quality.</p>
+</details>
 
-**Will it break code generation?**
-No. `keep-coding-instructions: true` keeps all coding behavior intact. Only the voice changes.
+<details>
+<summary><strong>Will it break code generation?</strong></summary>
+<p>No. <code>keep-coding-instructions: true</code> keeps all coding behavior intact. Only the voice changes.</p>
+</details>
 
-**Can I switch back?**
-Sure! `/options` → pick different style. Or remove it from `settings.json`.
+<details>
+<summary><strong>Can I switch back?</strong></summary>
+<p>Sure! <code>/options</code> → pick different style. Or remove it from <code>settings.json</code>.</p>
+</details>
 
-**Does it work with skills and agents?**
-Yes. Output style is the base voice; skills and agents still work normally.
+<details>
+<summary><strong>Does it work with skills and agents?</strong></summary>
+<p>Yes. Output style is the base voice; skills and agents still work normally.</p>
+</details>
 
-**Why not just tell Claude "be concise"?**
-You can, but you have to say it every. single. turn. Output style is always on, set once and forget.
+<details>
+<summary><strong>Why not just tell Claude "be concise"?</strong></summary>
+<p>You can, but you have to say it every. single. turn. Output style is always on, set once and forget.</p>
+</details>
 
-**Does it save money?**
-Yes. Fewer output tokens = lower cost, especially on long sessions.
+<details>
+<summary><strong>Does it save money?</strong></summary>
+<p>Yes. Fewer output tokens = lower cost, especially on long sessions.</p>
+</details>
 
-**Can I customize it?**
-You are more than welcome. Edit `caveman.md` in your `~/.claude/output-styles/` folder and make it your own.
+<details>
+<summary><strong>Can I customize it?</strong></summary>
+<p>You are more than welcome. Edit <code>caveman.md</code> in your <code>~/.claude/output-styles/</code> folder and make it your own.</p>
+</details>
 
 ## license
 
