@@ -8,13 +8,13 @@
   <strong>why waste words when few work?</strong>
 </p>
 
-<ul align="center" style="list-style: none; padding: 0;">
-  <li>Claude Code caveman output style.</li>
-  <li>Less fluff.</li>
-  <li>Same technical signal.</li>
-  <li>Always on by default.</li>
-  <li>Better adherence than CLAUDE.md or skills.</li>
-</ul>
+<p align="center">
+  <span>Claude Code caveman output style.</span>
+  <span>Less fluff.</span>
+  <span>Same technical signal.</span>
+  <span>Can be always on by default.</span>
+  <span>Better than CLAUDE.md or skills.</span>
+</p>
 
 ## quick start
 
