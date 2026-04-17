@@ -8,13 +8,13 @@
   <strong>why waste words when few work?</strong>
 </p>
 
-<p>
-  Claude Code caveman output style. 
-  - Less fluff. 
-  - Same technical signal. 
-  - Can be set as always on by default. 
-  - Better adherence than CLAUDE.md or skills.
-</p>
+<ul align="center" style="list-style: none; padding: 0;">
+  <li>Claude Code caveman output style.</li>
+  <li>Less fluff.</li>
+  <li>Same technical signal.</li>
+  <li>Always on by default.</li>
+  <li>Better adherence than CLAUDE.md or skills.</li>
+</ul>
 
 ## quick start
 
@@ -109,3 +109,9 @@ Yes. Edit `caveman.md` in your `~/.claude/output-styles/` folder. Make it your o
 ## license
 
 MIT. Do what you want.
+
+---
+
+<p align="center">
+  <strong>Like this? Star the repo. Share with your team.</strong>
+</p>
