@@ -79,6 +79,33 @@ This section is:
 - **Always on** — no model discretion, no invocation needed
 - **Survives long threads** — style persists without dilution
 
+## available styles
+
+### Caveman (default)
+
+Standard terse mode. Drop articles, filler, pleasantries, hedging. Fragments OK.
+
+### Caveman Ultra
+
+Maximum terseness. Telegraphic fragments. Symbols over words. Abbreviated prose.
+Use when you want the most aggressive compression.
+
+```bash
+# macOS / Linux
+cp ./.claude/output-styles/caveman-ultra.md ~/.claude/output-styles/caveman-ultra.md
+```
+
+```powershell
+# Windows
+Copy-Item .\.claude\output-styles\caveman-ultra.md $HOME\.claude\output-styles\caveman-ultra.md -Force
+```
+
+Then: `/config` → `Output Style` → `Caveman Ultra`.
+
+### Tokenizer-safe terseness
+
+Caveman (default) avoids aggressive abbreviations that may hurt clarity or tokenization on non-Anthropic models. Caveman Ultra goes further with symbols and prose abbreviations — use it when you trust your model's tokenizer.
+
 ## FAQ
 
 <details>
