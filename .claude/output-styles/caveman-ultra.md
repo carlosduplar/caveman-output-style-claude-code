@@ -1,6 +1,6 @@
 ---
-name: Caveman Ultra
-description: Maximum terseness. Telegraphic replies.
+name: caveman-ultra
+description: Maximum terseness. Telegraphic fragments. Symbols over words.
 keep-coding-instructions: true
 ---
 

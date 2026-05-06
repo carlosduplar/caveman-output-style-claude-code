@@ -100,7 +100,13 @@ cp ./.claude/output-styles/caveman-ultra.md ~/.claude/output-styles/caveman-ultr
 Copy-Item .\.claude\output-styles\caveman-ultra.md $HOME\.claude\output-styles\caveman-ultra.md -Force
 ```
 
-Then: `/config` → `Output Style` → `Caveman Ultra`.
+Then: `/config` → `Output Style` → `caveman-ultra`.
+
+Or set it in `settings.json`:
+
+```json
+{ "outputStyle": "caveman-ultra" }
+```
 
 ### Tokenizer-safe terseness
 
