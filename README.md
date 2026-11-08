@@ -20,15 +20,30 @@ mkdir -p ~/.claude/output-styles && cp ./.claude/output-styles/caveman.md ~/.cla
 New-Item -ItemType Directory $HOME\.claude\output-styles -Force | Out-Null; Copy-Item .\.claude\output-styles\caveman.md $HOME\.claude\output-styles\caveman.md -Force
 ```
 
-Then: `/config` → `Output Style` → `Caveman`. 
+Then pick the style:
 
-<img width="891" height="268" alt="image" src="https://github.com/user-attachments/assets/8a04a7a0-f043-4ac0-a6d5-62f1cd83364b" />
+```bash
+# Inside Claude Code (requires v2.1.269+)
+/output-style caveman
+```
 
-Want it always on? Add this to `~/.claude/settings.json`:
+Or: `/config` → `Output Style` → `caveman`.
+
+Or one-off without changing settings:
+
+```bash
+claude --output-style caveman
+```
+
+> Note: Claude Code reads style files at session start. If you create or edit a style mid-session, restart Claude Code to pick it up. Switching styles mid-session applies from your next message (before v2.1.251 it required `/clear` or a restart).
+
+Want it always on? Add this to `~/.claude/settings.json` (user default, all projects):
 
 ```json
 { "outputStyle": "caveman" }
 ```
+
+Use the exact lowercase name. The value is case-sensitive — `Caveman` does not match `caveman` and falls back to `Default`. Do not nest it under `preferences`; top-level `outputStyle` is correct. Project teams can commit `.claude/settings.json` instead; personal per-project overrides go in `.claude/settings.local.json` (kept out of git).
 
 ## Why use caveman?
 
@@ -38,7 +53,7 @@ Want it always on? Add this to `~/.claude/settings.json`:
 | what changed in auth? | I updated the middleware to reject missing bearer tokens before decoding the JWT, which prevents the null token crash. | Auth middleware now rejects missing bearer token before JWT decode. Crash gone. | ~45% |
 | how set default style? | Open your Claude settings file and add the `outputStyle` field with the value `caveman`, then start a new session. | Add `"outputStyle": "caveman"` to settings. Start new session. | ~47% |
 
-Real token count will vary. Table shows rough reduction only. Pattern is the same: less fluff out -> less output spend.
+Real token count will vary. Table shows rough reduction only. Pattern is the same: less fluff out -> less output spend. Voice-only savings: prose shrinks, code and tool calls stay unchanged. Percentages are illustrative, not measured benchmarks.
 
 Same answer, less bla. Shorter replies every turn, lower token bill and less energy wasted on filler.
 
@@ -48,7 +63,7 @@ Use when:
 - You want the same terse format on every turn
 - You want less output spend without losing technical substance
 
-Backed by research: [Brevity Constraints Reverse Performance Hierarchies in Language Models](https://arxiv.org/abs/2604.00025). Shorter answer keeps quality, and sometimes even improves it.
+Backed by research: [Brevity Constraints Reverse Performance Hierarchies in Language Models](https://arxiv.org/abs/2604.00025). That paper shows brevity constraints can preserve and sometimes improve accuracy on reasoning benchmarks — cited here for the accuracy finding, not as a token-savings proof for this style.
 
 ## why output style, not other things
 
@@ -79,15 +94,31 @@ This section is:
 - **Always on** — no model discretion, no invocation needed
 - **Survives long threads** — style persists without dilution
 
+Limits worth knowing:
+- **Input cost + cache:** style text is sent every request but prompt-cached after the first turn. Changing styles invalidates that cache, so the first message after a switch costs more.
+- **Scope:** applies to the main conversation and forks. Other subagents run their own system prompt, so the style does not change them.
+- **Coding behavior:** both styles set `keep-coding-instructions: true`, keeping Claude Code's software-engineering instructions alongside the voice. That field only affects the full system prompt — no effect on the short prompt unless `CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0`.
+- **Instruction, not enforcement:** a style instructs Claude; it does not guarantee every response matches. Anything that must happen without exception belongs in a hook, not a style.
+
 ## available styles
+
+This repo is a voice-only port (upstream caveman `Say less`). No proxy, no account, no settings rewrites. Pick one tier:
+
+| need | use |
+| --- | --- |
+| Light compression, full sentences | Built-in `Concise` (`/output-style concise`, requires v2.1.237+) |
+| Standard terse mode, fragments OK | `caveman` (this repo) |
+| Maximum compression, telegraphic + symbols | `caveman-ultra` (this repo) |
+
+No `lite` file ships here by design. If you want lighter than `caveman`, use built-in `Concise`.
 
 ### Caveman (default)
 
-Standard terse mode. Drop articles, filler, pleasantries, hedging. Fragments OK.
+Standard terse mode. Answer first, one idea per sentence, fragments OK. Drops articles, filler, pleasantries, hedging. Always keeps negations (`not`/`never`/`no`/`only`), numbers, units. Payload (code, commands, paths, errors, flags, URLs, JSON) verbatim. No chatter between tool calls; plain prose when it is not shorter. Full sentences for safety, irreversible actions, or confusion risk.
 
 ### Caveman Ultra
 
-Maximum terseness. Telegraphic fragments. Symbols over words. Abbreviated prose.
+Maximum terseness. Telegraphic fragments. Symbols over words (`→` `=` `≠`). Abbreviates prose only (`auth`, `req`, `res`, `config`, `fn`) — never code, identifiers, API names, errors, paths, or commands. Negations, numbers, units stay exact. Payload verbatim. Full sentences for safety, irreversible actions, or ambiguity.
 Use when you want the most aggressive compression.
 
 ```bash
@@ -100,7 +131,7 @@ cp ./.claude/output-styles/caveman-ultra.md ~/.claude/output-styles/caveman-ultr
 Copy-Item .\.claude\output-styles\caveman-ultra.md $HOME\.claude\output-styles\caveman-ultra.md -Force
 ```
 
-Then: `/config` → `Output Style` → `caveman-ultra`.
+Then: `/output-style caveman-ultra` (or `/config` → `Output Style` → `caveman-ultra`).
 
 Or set it in `settings.json`:
 
@@ -110,7 +141,7 @@ Or set it in `settings.json`:
 
 ### Tokenizer-safe terseness
 
-Caveman (default) avoids aggressive abbreviations that may hurt clarity or tokenization on non-Anthropic models. Caveman Ultra goes further with symbols and prose abbreviations — use it when you trust your model's tokenizer.
+Caveman (default) avoids aggressive abbreviations that may hurt clarity or tokenization on non-Anthropic models. Caveman Ultra goes further with symbols and prose-only abbreviations — never abbreviating code, identifiers, or errors — use it when you trust your model's tokenizer. When in doubt, stay on default `caveman` or built-in `Concise`.
 
 ## FAQ
 
@@ -121,17 +152,17 @@ Caveman (default) avoids aggressive abbreviations that may hurt clarity or token
 
 <details>
 <summary><strong>Will it break code generation?</strong></summary>
-<p>No. <code>keep-coding-instructions: true</code> keeps all coding behavior intact. Only the voice changes.</p>
+<p>No. <code>keep-coding-instructions: true</code> keeps Claude Code's software-engineering instructions alongside the voice. Only the voice changes. Note: that field applies to the full system prompt; it has no effect on the short prompt unless <code>CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0</code>.</p>
 </details>
 
 <details>
 <summary><strong>Can I switch back?</strong></summary>
-<p>Sure! <code>/options</code> → pick different style. Or remove it from <code>settings.json</code>.</p>
+<p>Sure! Run <code>/output-style default</code> (or pick another style via <code>/output-style</code> / <code>/config</code>). Or remove <code>outputStyle</code> from your <code>settings.json</code>.</p>
 </details>
 
 <details>
 <summary><strong>Does it work with skills and agents?</strong></summary>
-<p>Yes. Output style is the base voice; skills and agents still work normally.</p>
+<p>Yes. Output style is the base voice; skills still load when invoked or relevant. Subagents run their own system prompt, so the style does not change subagent responses — only the main conversation (and forks) use it.</p>
 </details>
 
 <details>
