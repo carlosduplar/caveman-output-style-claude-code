@@ -6,6 +6,10 @@
 
 <p align="center">Better consistency and adherence than CLAUDE.md or skills. Always-on formatting. Less fluff, same technical signal.</p>
 
+<p align="center">
+  <a href="https://github.com/carlosduplar/caveman-output-style-claude-code/releases"><img src="https://img.shields.io/github/v/release/carlosduplar/caveman-output-style-claude-code" alt="Latest release" /></a>
+</p>
+
 ## quick start
 
 One command. Done.
