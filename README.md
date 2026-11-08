@@ -33,10 +33,10 @@ Then pick the style:
 
 Or: `/config` → `Output Style` → `caveman`.
 
-Or one-off without changing settings:
+Or one-off without changing settings (`--output-style` is not a CLI flag; pass it via `--settings`):
 
 ```bash
-claude --output-style caveman
+claude -p 'why did the build fail?' --settings '{"outputStyle":"caveman"}'
 ```
 
 > Note: Claude Code reads style files at session start. If you create or edit a style mid-session, restart Claude Code to pick it up. Switching styles mid-session applies from your next message (before v2.1.251 it required `/clear` or a restart).
